@@ -32,13 +32,13 @@ print X_train.shape
 def baseline_model():
 	# create model
 	model = Sequential()
-	model.add(Conv2D(20, (5, 5), input_shape=(28, 28, 1), activation='relu'))
+	model.add(Conv2D(32, (5, 5), input_shape=(28, 28, 1), activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
-	model.add(Conv2D(40, (5, 5), activation='relu'))
+	model.add(Conv2D(15, (3, 3), activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2)))
 	model.add(Flatten())
-	model.add(Dense(1000, activation='relu'))
-	model.add(Dense(1000, activation='relu'))
+	model.add(Dense(128, activation='relu'))
+	model.add(Dense(50, activation='relu'))
 	model.add(Dense(num_classes, activation='softmax'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
