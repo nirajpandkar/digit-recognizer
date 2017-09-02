@@ -32,11 +32,13 @@ print X_train.shape
 def baseline_model():
 	# create model
 	model = Sequential()
-	model.add(Conv2D(32, (5, 5), input_shape=(28, 28, 1), activation='relu'))
+	model.add(Conv2D(20, (5, 5), input_shape=(28, 28, 1), activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
-	model.add(Dropout(0.2))
+	model.add(Conv2D(40, (5, 5), activation='relu'))
+	model.add(MaxPooling2D(pool_size=(2,2)))
 	model.add(Flatten())
-	model.add(Dense(128, activation='relu'))
+	model.add(Dense(1000, activation='relu'))
+	model.add(Dense(1000, activation='relu'))
 	model.add(Dense(num_classes, activation='softmax'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -57,9 +59,9 @@ print("Baseline Error: %.2f%%" % (100-scores[1]*100))
 
 # Serialize model to JSON
 model_json = model.to_json()
-with open("model.json", "w") as json_file:
+with open("model40.json", "w") as json_file:
     json_file.write(model_json)
 
 # Serialize weights to HDF5
-model.save_weights("model.h5")
+model.save_weights("model40.h5")
 print("Saved model")
