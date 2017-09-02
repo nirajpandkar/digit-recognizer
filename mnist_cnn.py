@@ -34,11 +34,11 @@ def baseline_model():
 	model = Sequential()
 	model.add(Conv2D(32, (5, 5), input_shape=(28, 28, 1), activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
-	model.add(Conv2D(15, (3, 3), activation='relu'))
+	model.add(Conv2D(64, (3, 3), activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2)))
 	model.add(Flatten())
-	model.add(Dense(128, activation='relu'))
-	model.add(Dense(50, activation='relu'))
+	model.add(Dense(300, activation='relu'))
+	model.add(Dense(300, activation='relu'))
 	model.add(Dense(num_classes, activation='softmax'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -52,7 +52,7 @@ tensorboard = TensorBoard(log_dir="logs", histogram_freq=0, write_graph=True, wr
 
 
 # Fit the model
-model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200, verbose=2, callbacks=[tensorboard])
+model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=100, verbose=2, callbacks=[tensorboard])
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Baseline Error: %.2f%%" % (100-scores[1]*100))

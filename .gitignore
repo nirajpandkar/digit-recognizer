@@ -1,3 +1,4 @@
 *.floyd*
 *.ipynb*
 logs
+*.py~
