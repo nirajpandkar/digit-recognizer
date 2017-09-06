@@ -31,7 +31,6 @@ y_train = np_utils.to_categorical(y_train)
 y_test = np_utils.to_categorical(y_test)
 num_classes = y_test.shape[1]
 
-print X_train.shape
 def baseline_model():
 	# create model
 	model = Sequential()
