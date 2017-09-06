@@ -16,6 +16,9 @@ numpy.random.seed(seed)
 
 # load data
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+X_test = X_test[:5000]
+y_test = y_test[:5000]
 # reshape to be [samples][pixels][width][height]
 X_train = X_train.reshape(X_train.shape[0], 28,28,1).astype('float32')
 X_test = X_test.reshape(X_test.shape[0], 28, 28, 1).astype('float32')
@@ -55,7 +58,7 @@ tensorboard = TensorBoard(log_dir="logs", histogram_freq=0, write_graph=True, wr
 model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=100, verbose=2, callbacks=[tensorboard])
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
-print("Baseline Error: %.2f%%" % (100-scores[1]*100))
+print("Error: %.2f%%" % (100-scores[1]*100))
 
 # Serialize model to JSON
 model_json = model.to_json()
