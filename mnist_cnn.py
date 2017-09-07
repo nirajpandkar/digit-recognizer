@@ -39,6 +39,7 @@ def baseline_model():
 	model.add(Conv2D(64, (3, 3), activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2)))
 	model.add(Flatten())
+	model.add(Dropout(0.2))
 	model.add(Dense(300, activation='relu'))
 	model.add(Dense(300, activation='relu'))
 	model.add(Dense(num_classes, activation='softmax'))
