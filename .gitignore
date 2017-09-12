@@ -3,3 +3,4 @@
 logs
 *.py~
 *pyc
+deploy-flask/

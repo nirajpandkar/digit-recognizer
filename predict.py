@@ -4,7 +4,6 @@ from keras.datasets import mnist
 from imread import imread
 from PIL import Image
 import numpy as np
-from mnist_cnn import X_test, y_test
 json_file = open("model80.json", "r")
 loaded_model_json = json_file.read()
 json_file.close()
