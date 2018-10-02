@@ -1,3 +1,6 @@
 *.floyd*
 *.ipynb*
 logs
+*.py~
+*pyc
+deploy-flask/
